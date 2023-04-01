@@ -1,0 +1,3 @@
+[submodule "vendor/en61"]
+	path = vendor/en61
+	url = git@github.com:en61/en61.git
