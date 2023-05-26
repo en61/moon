@@ -1,15 +1,15 @@
 #include "surface.h"
 
 Surface::Surface() {
-	_mesh = std::make_shared<Mesh>();
-	_shader = std::make_shared<Shader>();
-	_texture = std::make_shared<Texture>();
+	auto model = en61::MakeRef<en61::Model>();
+	auto shader = en61::MakeRef<en61::Shader>();
+	auto texture = en61::MakeRef<en61::Texture>();
 
-	_shader->Load("../assets/surface.vert", "../assets/surface.frag");
-	_mesh->Load("../assets/surface.obj");
-	_texture->Load("../assets/moon.png");
+	shader->Load("../assets/surface.vs", "../assets/surface.fs");
+	model->Load("../assets/surface.obj");
+	texture->Load("../assets/moon.png");
 
-	SetMesh(_mesh);
-	SetShader(_shader);
-	AddTexture(_texture);
+	SetModel(model);
+	SetShader(shader);
+	AddTexture(texture);
 }

@@ -1,29 +1,26 @@
 #include "cloud.h"
 
-#include <glm/gtx/transform.hpp>
-#include <memory>
+#include "cloud_mesh.h"
 
 Cloud::Cloud() {
-	_mesh = std::make_shared<CloudMesh>();
-	_shader = std::make_shared<Shader>();
-	_texture = std::make_shared<Texture>();
-	_position = glm::vec3(-0.3f, 1, -3.f);
 
-	_texture->Load("../assets/blue_particle.png");
-	_shader->Load("../assets/particle.vert", "../assets/particle.frag", "../assets/particle.geom");
+	auto model = en61::MakeRef<CloudMesh>();
+	auto shader = en61::MakeRef<en61::Shader>();
+	auto texture = en61::MakeRef<en61::Texture>();
 
-	AddTexture(_texture);
-	SetShader(_shader);
-	SetMesh(_mesh);
+	texture->Load("../assets/blue_particle.png");
+	shader->Load("../assets/particle.vs", "../assets/particle.fs", "../assets/particle.gs");
+
+	AddTexture(texture);
+	SetShader(shader);
+	SetModel(model);
+
+	SetPosition({-0.3f, 1, -3.f});
 }
 
-
-void Cloud::Render(const glm::mat4 &model, const glm::mat4 &view, const glm::mat4 &proj) {
-
+void Cloud::Render(const glm::mat4 &view, const glm::mat4 &proj) {
 	glDepthMask(false);
-
-	auto translated_model = glm::translate(model, _position);
-	Object::Render(translated_model, view, proj);
-
+	Object::Render(view, proj);
 	glDepthMask(true);
 }
+

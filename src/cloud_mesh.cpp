@@ -33,7 +33,7 @@ void CloudMesh::Draw() {
 			i--;
 		}
 		else {
-			_positions[i * 3]   = _particles[i]->X();
+			_positions[i * 3]	= _particles[i]->X();
 			_positions[i * 3 + 1] = _particles[i]->Y();
 			_positions[i * 3 + 2] = _particles[i]->Z();
 		}

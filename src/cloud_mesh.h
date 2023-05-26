@@ -1,15 +1,13 @@
 #pragma once
 
-#include <core/renderer/mesh.h>
+#include <core/renderer/model.h>
 #include <core/renderer/vertex_array.h>
 #include <core/renderer/vertex_buffer.h>
 
 #include "particle.h"
 #include "kdtree.h"
 
-using namespace en61;
-
-class CloudMesh: public IMesh {
+class CloudMesh: public en61::ModelBase {
 public:
 	CloudMesh(size_t count = 1500);
 	~CloudMesh();
@@ -21,8 +19,8 @@ protected:
 	std::vector<Particle*> _particles;
 	std::vector<Particle*> _nearParticles;
 
-	VertexBuffer _buffer;
-	VertexArray _array;
+	en61::VertexBuffer _buffer;
+	en61::VertexArray _array;
 
 	float *_positions;
 	size_t _count; // of particles
