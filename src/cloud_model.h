@@ -7,10 +7,10 @@
 #include "particle.h"
 #include "kdtree.h"
 
-class CloudMesh: public en61::ModelBase {
+class CloudModel: public en61::ModelBase {
 public:
-	CloudMesh(size_t count = 1500);
-	~CloudMesh();
+	CloudModel(size_t count = 1500);
+	~CloudModel();
 
 	void Draw() override;
 

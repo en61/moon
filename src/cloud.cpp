@@ -1,10 +1,10 @@
 #include "cloud.h"
 
-#include "cloud_mesh.h"
+#include "cloud_model.h"
 
 Cloud::Cloud() {
 
-	auto model = en61::MakeRef<CloudMesh>();
+	auto model = en61::MakeRef<CloudModel>();
 	auto shader = en61::MakeRef<en61::Shader>();
 	auto texture = en61::MakeRef<en61::Texture>();
 

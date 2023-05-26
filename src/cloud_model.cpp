@@ -1,18 +1,18 @@
-#include "cloud_mesh.h"
+#include "cloud_model.h"
 
-CloudMesh::CloudMesh(size_t count): _count(count) {
+CloudModel::CloudModel(size_t count): _count(count) {
 	_positions = new float[3 * _count];
 	_particles.push_back(new Particle);
 }
 
-CloudMesh::~CloudMesh() {
+CloudModel::~CloudModel() {
 	for (auto particle: _particles)
 		delete particle;
 
 	delete [] _positions;
 }
 
-void CloudMesh::Draw() {
+void CloudModel::Draw() {
 	std::fill_n(_positions, _count * 3, -5);
 	if (_particles.size() < _count - 6) {
 		for (int i = 0; i < 6; i++)
